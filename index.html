@@ -76,7 +76,7 @@
         <div class="w-12 h-12 rounded-2xl bg-gray-800 flex items-center justify-center mx-auto text-xl">🔒</div>
         <h3 class="text-lg font-bold">Нужен доступ?</h3>
         <p class="text-xs text-gray-400 leading-relaxed">Зарегистрируйся на 1win по нашей ссылке, введи ID в профиле и сделай первый депозит — сигналы разблокируются автоматически.</p>
-        <a href="https://1win.com" target="_blank" onclick="closeModal('modal-access')" class="block w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3 rounded-xl text-sm">Зарегистрироваться</a>
+        <a href="https://lkfg.pro/05eaee" target="_blank" onclick="closeModal('modal-access')" class="block w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3 rounded-xl text-sm">Зарегистрироваться</a>
       </div>
     </div>
 
@@ -120,7 +120,7 @@
       </div>
 
       <!-- Золотая кнопка 1WIN -->
-      <a href="https://1win.com" target="_blank" class="shimmer-btn rounded-2xl p-4 flex items-center justify-between text-black shadow-lg shadow-amber-500/10">
+      <a href="https://lkfg.pro/05eaee" target="_blank" class="shimmer-btn rounded-2xl p-4 flex items-center justify-between text-black shadow-lg shadow-amber-500/10">
         <div>
           <div class="font-black text-base">ИГРАТЬ НА 1WIN</div>
           <div class="text-xs opacity-80 font-medium">Перейти на официальный сайт</div>
@@ -160,7 +160,7 @@
       <div onclick="copyPromo()" class="bg-gradient-to-r from-amber-950/60 to-amber-900/20 border border-amber-500/30 rounded-2xl p-4 flex items-center justify-between cursor-pointer">
         <div>
           <div class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Промокод • Бонус +500%</div>
-          <div class="font-mono font-bold text-base tracking-wider mt-0.5">TOWER500WIN</div>
+          <div class="font-mono font-bold text-base tracking-wider mt-0.5">PapichFreeDeposit</div>
         </div>
         <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center">📋</div>
       </div>
@@ -234,7 +234,7 @@
           <span class="bg-[#131b2e] px-3 py-1 rounded-full border border-rose-500/30 text-rose-400">Поражений <b id="stat-losses">0</b></span>
         </div>
 
-        <!-- Игровое окно с небом и качающимся домиком (Скрывается во время показа результата) -->
+        <!-- Игровое окно с небом и качающимся домиком -->
         <div id="game-canvas" class="relative h-72 rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#4a6fa5] via-[#7ea1c4] to-[#c2d6e8] flex flex-col justify-between items-center">
           <!-- Крюк и качающийся блок -->
           <div id="crane-block" class="swing-box flex flex-col items-center -mt-2">
@@ -280,7 +280,7 @@
           </div>
         </div>
 
-        <!-- ЭКРАН 3.4: Готовый сигнал (Сколько этажей строить) -->
+        <!-- ЭКРАН 3.4: Готовый сигнал -->
         <div id="sig-result" class="hidden card-bg rounded-2xl p-5 space-y-4">
           <div class="text-center">
             <div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Сигнал готов</div>
@@ -424,7 +424,7 @@
     }
 
     function copyPromo() {
-      navigator.clipboard.writeText('TOWER500WIN');
+      navigator.clipboard.writeText('PapichFreeDeposit');
       showToast('✓ Промокод скопирован!');
     }
 
@@ -530,7 +530,6 @@
         floors = Math.floor(Math.random() * 3) + 5; // 5-7 этажей
         mult = (2.3 + Math.random() * 0.9).toFixed(1);
         riskText = 'Средний';
-        betText = 0.35;
         betRatio = 0.35;
       } else {
         floors = Math.floor(Math.random() * 3) + 6; // 6-8 этажей
