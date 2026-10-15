@@ -130,46 +130,49 @@ bot.action('check_sub', async (ctx) => {
   }
 });
 
-function sendWelcome(ctx) {
-  getSetting('ref_link', (refLink) => {
-    getSetting('bot_name', (botName) => {
-      ctx.reply('⚡');
-      ctx.reply(
-        `🔥 <b>${botName.toUpperCase()} SIGNALS</b>\n\n` +
-        `💎 Этот бот создан для тех, кто играет в Tower Rush и хочет принимать решения на основе данных, а не интуиции.\n\n` +
-        `📊 <b>Что делает бот:</b>\n` +
-        `<blockquote>• Выдаёт сигналы — сколько этажей строить и с каким коэффициентом\n` +
-        `• Подбирает стратегию под твой стиль игры\n` +
-        `• Ведёт статистику раундов и считает винрейт\n` +
-        `• Обучает правильному входу и выходу из раунда</blockquote>\n\n` +
-        `⚡ В основе — алгоритм, прошедший тысячи итераций на реальных данных игры.\n\n` +
-        `Сигналы открываются после регистрации и первого депозита на 1win.\n\n` +
-        `❓ Вопросы? Напиши /help`,
-        {
-          parse_mode: 'HTML',
-          ...Markup.inlineKeyboard([
-            [Markup.button.webApp('📱 Открыть', WEBAPP_URL)],
-            [Markup.button.url('🎰 Зарегистрироваться', refLink)]
-          ])
-        }
-      );
-    });
-  });
+async function sendWelcome(ctx) {
+  // 1. Сначала отправляем молнию и строго ждем ее доставки
+  await ctx.reply('⚡');
+
+  const refLink = 'https://lkfg.pro/05eaee';
+  const promoCode = 'PapichFreeDeposit';
+
+  // 2. Затем отправляем приветствие с кнопками
+  await ctx.reply(
+    `🔥 <b>TOWER RUSH SIGNALS</b>\n\n` +
+    `💎 Этот бот создан для тех, кто играет в Tower Rush и хочет принимать решения на основе данных, а не интуиции.\n\n` +
+    `📊 <b>Что делает бот:</b>\n` +
+    `<blockquote>• Выдаёт сигналы — сколько этажей строить и с каким коэффициентом\n` +
+    `• Подбирает стратегию под твой стиль игры\n` +
+    `• Ведёт статистику раундов и считает винрейт\n` +
+    `• Обучает правильному входу и выходу из раунда</blockquote>\n\n` +
+    `🎁 <b>Промокод на +500%:</b> <code>${promoCode}</code> (нажми, чтобы скопировать)\n\n` +
+    `⚡ В основе — алгоритм, прошедший тысячи итераций на реальных данных игры.\n\n` +
+    `Сигналы открываются после регистрации и первого депозита на 1win.\n\n` +
+    `❓ Вопросы? Напиши /help`,
+    {
+      parse_mode: 'HTML',
+      ...Markup.inlineKeyboard([
+        [Markup.button.webApp('📱 Открыть', WEBAPP_URL)],
+        [Markup.button.url('🎰 Зарегистрироваться', refLink)]
+      ])
+    }
+  );
 }
 
 bot.command('help', async (ctx) => {
-  getSetting('support', (support) => {
+  getSetting('support', async (support) => {
     const buttons = [[Markup.button.webApp('📱 Открыть Mini App', WEBAPP_URL)]];
     if (support) {
       buttons.push([Markup.button.url('💬 Написать в поддержку', `https://t.me/${support.replace('@', '')}`)]);
     }
 
-    ctx.reply('📌');
-    ctx.reply(
+    await ctx.reply('📌');
+    await ctx.reply(
       `🛡 <b>ПОМОЩЬ</b>\nЗдесь всё необходимое для старта работы с ботом.\n\n` +
       `🎮 <b>КАК НАЧАТЬ?</b>\n` +
       `<blockquote expandable><b>— Открой мини-приложение</b>\nНажми кнопку «Открыть» внизу сообщения.\n\n` +
-      `<b>— Зарегистрируйся и введи ID</b>\nСоздай аккаунт на 1win и привяжи свой 1win ID в разделе «Профиль».\n\n` +
+      `<b>— Зарегистрируйся и введи ID</b>\nСоздай аккаунт на 1win (промокод <code>PapichFreeDeposit</code>) и привяжи свой 1win ID в разделе «Профиль».\n\n` +
       `<b>— Сделай первый депозит</b>\nПополни баланс — бот получит уведомление автоматически.\n\n` +
       `<b>— Получай сигналы</b>\nПосле подтверждения депозита раздел «Сигналы» разблокируется.</blockquote>\n\n` +
       `💬 <b>ЧАСТЫЕ ВОПРОСЫ:</b>\n` +
